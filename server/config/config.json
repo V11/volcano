@@ -1,0 +1,26 @@
+{
+  "connection": {
+    "host": "localhost",
+    "port": "8080",
+    "allowedServers": ["http://localhost:3000", "http://localhost:63342"]
+  },
+  "db": {
+  },
+  "email": {
+    "auth": {
+      "user": "volcano.khai@gmail.com",
+      "pass": "volcano@khai"
+    },
+    "admin": "kurochka.p@gmail.com"
+  },
+  "nmap": {
+    "light": "nmap -oX - %url",
+    "medium": "nmap -v -A -oX - %url",
+    "advanced": "nmap -O -oX - %url"
+  },
+  "sqlmap": {
+    "light": "python ./sqlmap/sqlmap.py --url='%url' --batch --output-dir=./sqlmap/out",
+    "medium": "python ./sqlmap/sqlmap.py --url='%url' --batch -v 3 --output-dir=./sqlmap/out",
+    "advanced": "python ./sqlmap/sqlmap.py --url='%url' --forms --batch --level=5 --output-dir=./sqlmap/out"
+  }
+}

@@ -1,0 +1,49 @@
+<div class="row">
+    <h1 class="text-center">Contact us!</h1>
+
+    <p class="lead text-center">
+        Here you can leave your feedback about our web-service or contact us to get our help in security.
+    </p>
+
+    <div class="col-xs-offset-1 col-xs-10 col-sm-offset-3 col-sm-6 col-md-offset-3 col-md-6 col-lg-offset-4 col-lg-4">
+        <form name="contactForm" data-ng-submit="onSubmit()" novalidate>
+            <div class="form-group"
+                 data-ng-class="{ 'has-error' : contactForm.email.$invalid && !contactForm.email.$pristine }">
+                <input name="email" type="email" class="form-control input-lg" data-ng-model="feedback.email"
+                       placeholder="Email" required>
+
+                <p data-ng-show="contactForm.email.$invalid && !contactForm.email.$pristine" class="help-block">Enter a
+                    valid
+                    email.</p>
+            </div>
+            <div class="form-group"
+                 data-ng-class="{ 'has-error' : contactForm.email.$invalid && !contactForm.email.$pristine }">
+                <textarea name="body" class="form-control input-lg" rows="5" placeholder="Enter your text here..."
+                          data-ng-model="feedback.body" data-ng-minlength="5" required></textarea>
+
+                <p data-ng-show="contactForm.body.$invalid && !contactForm.body.$pristine" class="help-block">Fill this
+                    field!</p>
+            </div>
+            <button type="submit" class="btn btn-success btn-lg btn-block" data-ng-disabled="contactForm.$invalid">Send
+            </button>
+        </form>
+    </div>
+    <div class="modal fade" id="feedbackModal" tabindex="-1" role="dialog" aria-labelledby="feedbackModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="feedbackModalLabel">Feedback</h4>
+                </div>
+                <div class="modal-body">
+                    <p class="lead">Your request has been sent to the server and it will be processed shortly.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

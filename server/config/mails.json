@@ -1,0 +1,5 @@
+{
+  "nmap": "Hello you have requested for vulnerability testing %url resource using utilite nmap. It's done. The report are below: \n",
+  "sqlmap": "Hello you have requested for vulnerability testing %url resource using utilite sqlmap. It's done. The report are below: \n",
+  "feedback": "Hello admin! \n You have a new feedback from %email. The feedback body is the following: \n"
+}

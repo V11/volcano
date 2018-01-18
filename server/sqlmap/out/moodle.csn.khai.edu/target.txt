@@ -1,0 +1,3 @@
+http://moodle.csn.khai.edu/login/index.php (POST)
+
+username=Kpzw&password=&rememberusername=1

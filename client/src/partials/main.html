@@ -1,0 +1,74 @@
+<div class="row">
+    <h1 class="text-center">Volcano - vulnerability finder!</h1>
+
+    <p class="lead text-center">
+        Volcano - is an app to test your web resource for vulnerabilities.
+    </p>
+</div>
+<div class="row">
+    <h1 class="text-center">Test your Luck!</h1>
+
+    <div class="col-xs-offset-1 col-xs-10 col-sm-offset-3 col-sm-6 col-md-offset-3 col-md-6 col-lg-offset-4 col-lg-4">
+        <form name="mainForm" data-ng-submit="onSubmit()" novalidate>
+            <div class="form-group"
+                 data-ng-class="{'has-error':mainForm.target_url.$invalid && !mainForm.target_url.$pristine}">
+                <input name="target_url" type="url" class="form-control input-lg" data-ng-minlength="7"
+                       data-ng-maxlength="60"
+                       data-ng-model="session.target_url" placeholder="Target url" required>
+
+                <p data-ng-show="mainForm.target_url.$invalid && !mainForm.target_url.$pristine" class="help-block">
+                    Target
+                    url is
+                    incorrect.</p>
+
+                <p data-ng-show="mainForm.target_url.$error.minlength" class="help-block">Target url is too short.</p>
+
+                <p data-ng-show="mainForm.target_url.$error.maxlength" class="help-block">Target url is too long.</p>
+            </div>
+            <div class="form-group"
+                 data-ng-class="{ 'has-error' : mainForm.email.$invalid && !mainForm.email.$pristine }">
+                <input name="email" type="email" class="form-control input-lg" data-ng-model="session.report_email"
+                       placeholder="Email" required>
+
+                <p data-ng-show="mainForm.email.$invalid && !mainForm.email.$pristine" class="help-block">Enter a valid
+                    email.</p>
+            </div>
+            <ol title="Choose utility..." class="nya-bs-select btn-group-lg col-xs-12 col-sm-12 col-md-12 col-lg-12"
+                ng-model="session.utility" required>
+                <li nya-bs-option="util in utils">
+                    <a>{{::util.title}}</a>
+                </li>
+            </ol>
+            <h2 class="lead text-center text-uppercase">Select testing mode:</h2>
+
+            <div class="btn-group btn-group-lg btn-group-justified cm-control">
+                <label data-ng-repeat="mode in modes" class="btn btn-default elipsis" data-ng-model="session.test_mode"
+                       btn-radio="mode.value"><span class="elipsis">{{::mode.title}}</span></label>
+            </div>
+            <button type="submit" class="btn btn-success btn-lg btn-block" data-ng-disabled="mainForm.$invalid">Run
+            </button>
+        </form>
+        <div class="modal fade" id="reportModal" tabindex="-1" role="dialog" aria-labelledby="reportModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">&times;</span></button>
+                        <h4 data-ng-show="!error" class="modal-title" id="reportModalLabel">Testing is started...</h4>
+                        <h4 data-ng-show="error" class="modal-title" id="reportModalLabel">Error...</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p data-ng-show="!error" class="lead">Your request has been sent to the server and it's already in processing. When it's done, you
+                        will receive a mail with results of the testing on the following email address:
+                        <mark>{{session.report_email}}</mark>. If you have any questions, you can contact us via <a href="#/contact">Contact page</a></p>
+                        <p data-ng-show="error" class="lead">The requested url doesn't exist!</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">OK</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
